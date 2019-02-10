@@ -21,14 +21,13 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter {
     public void loginButtonClicked() {
 
         if (view != null) {
-            if (view.getFirstName().trim().equals("") || view.getLastName().trim().equals("")){
+            if (view.getFirstName().trim().equals("") || view.getLastName().trim().equals("")) {
                 view.showInputError();
+            } else {
+                model.createUser(view.getFirstName(), view.getLastName());
+                view.showUserSavedMessage();
             }
-        } else {
-            model.createUser(view.getFirstName(), view.getLastName());
-            view.showUserSavedMessage();
         }
-
     }
 
     @Override
